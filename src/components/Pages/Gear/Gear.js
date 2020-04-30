@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Footer = () => {
+const Gear = () => {
     return (
         <div>
-            This is footer
+            This is  gear
         </div>
     );
 };
 
-export default Footer;
+export default Gear;

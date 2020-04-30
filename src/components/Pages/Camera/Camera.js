@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Footer = () => {
+const Camera = () => {
     return (
         <div>
-            This is footer
+            This is Camera
         </div>
     );
 };
 
-export default Footer;
+export default Camera;

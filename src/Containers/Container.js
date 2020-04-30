@@ -1,22 +1,18 @@
-import React, { Component } from 'react';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import Home from "./Home/Home";
-import Profile from "./Profile/Profile";
-
+import React, {Component} from 'react';
+import {Route, BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import Router from "./Router/Router";
 
 import store from '../store';
+
 
 class Container extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Router>
-                    <div>
-                        <Route path="/" exact component={Home} />
-                        <Route path="/profile" exact component={Profile} />
-                    </div>
-                </Router>
+                <BrowserRouter>
+                    <Route path="/" component={Router}/>
+                </BrowserRouter>
             </Provider>
         );
     }

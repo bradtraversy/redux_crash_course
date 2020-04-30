@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Footer = () => {
+const EditProfile = () => {
     return (
         <div>
-            This is footer
+            Edit Profile
         </div>
     );
 };
 
-export default Footer;
+export default EditProfile;
