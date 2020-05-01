@@ -1,8 +1,7 @@
 import React from 'react';
 import Gallery from 'react-photo-gallery'
-const photos = [
-];
-const photos = [
+
+let photos = [
     {
         src: 'https://picsum.photos/id/237/200/300',
         width: 1,
@@ -39,9 +38,20 @@ const photos = [
         height: 1
     }
 ];
+
 function Image() {
+    const [state, setState] = React.useState({
+        photos
+    });
+    const loadMore = () => {
+        setState({photos:state.photos.concat(state.photos)})
+    }
+
     return (
-        <Gallery photos={photos} direction={"column"}/>
+        <div>
+            <Gallery photos={state.photos} direction={"column"}/>
+            <button onClick={() => loadMore()} style={{zIndex:'900',marginBottom:'100px',overflow:'visible'}}>Load More</button>
+        </div>
     );
 }
 
