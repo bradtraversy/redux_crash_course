@@ -2,9 +2,9 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            This is footer
-        </div>
+        <nav className="navbar fixed-bottom navbar-light bg-light ">
+            <a className="navbar-brand " href="#">Flicaf</a>
+        </nav>
     );
 };
 

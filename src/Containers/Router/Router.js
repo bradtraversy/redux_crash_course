@@ -4,11 +4,15 @@ import Layout from "../../components/Common/Layout/Layout";
 import NotFound from "../Others/NotFound";
 const routes = [
     {
+        path: '/',
+        component: lazy(() => import('../../components/Pages/Image/Image')),
+        exact: true,
+    },{
         path: '/photo',
         component: lazy(() => import('../../components/Pages/Image/Image')),
         exact: true,
     }, {
-        path: '/photgrapher',
+        path: '/photographer',
         component: lazy(() => import('../../components/Pages/Photographer/Photographer')),
         exact: true,
     }, {

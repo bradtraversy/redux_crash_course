@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from "../Header/Header";
 import Footer from "../Footer/footer";
+import Modal from "../../Modal/Modal";
 class Layout extends Component {
     render() {
         return (
@@ -8,6 +9,7 @@ class Layout extends Component {
                 <Header/>
                 {this.props.children}
                 <Footer/>
+                <Modal/>
             </div>
         );
     }
