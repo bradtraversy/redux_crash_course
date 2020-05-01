@@ -18,7 +18,7 @@ const Header = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <NavLink to="/">
-                <a className="navbar-brand">FLICAF</a>
+                <p className="navbar-brand">FLICAF</p>
             </NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -30,31 +30,31 @@ const Header = () => {
                 <ul className="navbar-nav mr-auto">
                     <NavLink to="/photo">
                         <li className="nav-item ">
-                            <a className="nav-link" href="#">PHOTOS</a>
+                            <p className="nav-link" href="#">PHOTOS</p>
                         </li>
                     </NavLink>
                     <NavLink to="/camera">
                         <li className="nav-item ">
-                            <a className="nav-link" href="#">CAMERA</a>
+                            <p className="nav-link" href="#">CAMERA</p>
                         </li>
                     </NavLink>
                     <NavLink to="/photographer">
                         <li className="nav-item ">
-                            <a className="nav-link" href="#">PHOTOGRAPHER</a>
+                            <p className="nav-link" href="#">PHOTOGRAPHER</p>
                         </li>
                     </NavLink>
                     <NavLink to="/gear">
                         <li className="nav-item ">
-                            <a className="nav-link" href="#">GEAR</a>
+                            <p className="nav-link" href="#">GEAR</p>
                         </li>
                     </NavLink>
                     <NavLink to="/blog">
                         <li className="nav-item ">
-                            <a className="nav-link" href="#">BLOG</a>
+                            <p className="nav-link" href="#">BLOG</p>
                         </li>
                     </NavLink>
                 </ul>
-                <ul class="navbar-nav ml-auto">
+                <ul className="navbar-nav ml-auto">
                     <li className="nav-item " onClick={()=>openLogin()}>
                         <a className="nav-link" href='#'>Login</a>
                     </li>

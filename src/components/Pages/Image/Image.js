@@ -1,6 +1,8 @@
 import React from 'react';
 import Gallery from 'react-photo-gallery'
 const photos = [
+];
+const photos = [
     {
         src: 'https://picsum.photos/id/237/200/300',
         width: 1,

@@ -11,8 +11,10 @@ const store = createStore(
   initialState,
   compose(
     applyMiddleware(...middleware),
-      window.navigator.userAgent.includes('Chrome') ?
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(): compose
+      typeof window === 'object' &&
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+          window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+          }) : compose
   )
 );
 
