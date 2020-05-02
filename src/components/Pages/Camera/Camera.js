@@ -3,7 +3,9 @@ import './style.css'
 import {useDispatch, useSelector} from "react-redux";
 import {getCameras} from '../../../actions/cameraActions';
 import Image from '../../../Helpers/Image'
+import {createBrowserHistory} from "history";
 
+const history = createBrowserHistory()
 const Camera = () => {
     const {initialCamera, cameras} = useSelector(state => state.cameras);
     const dispatch = useDispatch();
@@ -19,7 +21,7 @@ const Camera = () => {
                 <div className="card-body">
                     <h5 className="card-title">{camera.title}</h5>
                     <p className="card-text">{camera.desc}</p>
-                    <a href="#" className="btn btn-primary">Buy</a>
+                    <a href="#" onClick={()=>history.push(`/camera/${camera.id}`)} className="btn btn-primary">Buy</a>
                 </div>
             </div>))}
         </div>

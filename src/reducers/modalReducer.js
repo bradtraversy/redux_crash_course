@@ -1,7 +1,7 @@
 import {TOGGLE_LOGIN, TOGGLE_SIGNUP,TOGGLE_UPLOAD} from '../actions/types';
 
 const initialState = {
-    login: false,
+    isLogin: false,
     signUp: false,
     upload: false
 };
@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
         case TOGGLE_LOGIN:
             return {
                 ...state,
-                login: !state.login
+                isLogin: !state.isLogin
             };
         case TOGGLE_SIGNUP:
             return {

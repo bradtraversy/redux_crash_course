@@ -12,18 +12,34 @@ const routes = [
         component: lazy(() => import('../../components/Pages/Image/Image')),
         exact: true,
     }, {
+        path: '/photographer/:id',
+        component: lazy(() => import('../../components/Pages/Photographer/PhotographerInfo')),
+        exact: true,
+    }, {
         path: '/photographer',
         component: lazy(() => import('../../components/Pages/Photographer/Photographer')),
         exact: true,
     }, {
+        path: '/camera/:id',
+        component: lazy(() => import('../../components/Pages/Camera/CameraInfo')),
+        exact: true,
+    },{
         path: '/camera',
         component: lazy(() => import('../../components/Pages/Camera/Camera')),
         exact: true,
     }, {
+        path: '/blog/:id',
+        component: lazy(() => import('../../components/Pages/Blog/BlogInfo')),
+        exact: true,
+    },{
         path: '/blog',
         component: lazy(() => import('../../components/Pages/Blog/Blog')),
         exact: true,
     }, {
+        path: '/gear/:id',
+        component: lazy(() => import('../../components/Pages/Gear/GearInfo')),
+        exact: true,
+    },{
         path: '/gear',
         component: lazy(() => import('../../components/Pages/Gear/Gear')),
         exact: true,
