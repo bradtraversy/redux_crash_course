@@ -2,7 +2,7 @@ import React from 'react';
 import NavLink from "./NavLink";
 import {useDispatch, useSelector} from "react-redux";
 import {LOGOUT, TOGGLE_LOGIN, TOGGLE_SIGNUP, TOGGLE_UPLOAD} from "../../../actions/types";
-
+import './style.css'
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -31,9 +31,6 @@ const Header = () => {
     }, {
         route: '/blog',
         label: 'Blog'
-    }, {
-        route: '/photo',
-        label: 'Photos'
     }];
     const publicRoute = [{
         action: () => openLogin(),
@@ -54,13 +51,13 @@ const Header = () => {
     const actionRoute = () => {
         if (Object.keys(user).length) {
             return privateRoute.map(route => (
-                <li className="nav-item " onClick={route.action}>
+                <li className="nav-item hover" onClick={route.action}>
                     <a className="nav-link">{route.label}</a>
                 </li>
             ))
         } else {
             return publicRoute.map(route => (
-                <li className="nav-item " onClick={route.action}>
+                <li className="nav-item hover" onClick={route.action}>
                     <a className="nav-link">{route.label}</a>
                 </li>
             ))
