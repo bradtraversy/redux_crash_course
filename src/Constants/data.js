@@ -1,6 +1,6 @@
 export const cameras = [{
     id: 1,
-    url: 'https://picsum.photos/id/242/200/100',
+    url: 'https://flicaf.com/uploads/rent_sale/www_flicaf_com_rentSale_2_1573844266.jpg',
     title: 'Camera 1',
     desc: 'some description',
     brand:'Sony',
@@ -11,7 +11,7 @@ export const cameras = [{
 }]
 export const gears = [{
     id: 1,
-    url: 'https://picsum.photos/id/242/200/100',
+    url: 'https://flicaf.com/uploads/rent_sale/www_flicaf_com_rentSale_2_1573845074.jpg',
     title: 'Gear 1',
     desc: 'Some description',
     brand:'Sony',
@@ -62,6 +62,17 @@ export const users = [{
     id: 1,
     photo: 'https://storage.googleapis.com/stateless-campfire-pictures/2019/05/e4629f8e-defaultuserimage-15579880664l8pc.jpg',
     name: 'Aditya',
+    mobile: '9567682232',
+    country: 'India',
+    location: 'kollame',
+    email: 'aditya@emvigotech.com',
+    Gender: 'male',
+    DOB: '28-06-1997',
+    password:'123'
+},{
+    id: 2,
+    photo: 'https://storage.googleapis.com/stateless-campfire-pictures/2019/05/e4629f8e-defaultuserimage-15579880664l8pc.jpg',
+    name: 'Amal',
     mobile: '9567682232',
     country: 'India',
     location: 'kollame',

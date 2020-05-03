@@ -15,7 +15,7 @@ const Gear = () => {
         }
     }, [dispatch, initialUser]);
     return (
-        <div>
+        <div className={"row"}>
             {users.map((user, i) => (<div className="card" key={i}>
                 <Image src={user.photo} className="card-img-top" alt="camera" height={"200"}/>
                 <div className="card-body">

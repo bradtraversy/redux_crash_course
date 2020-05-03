@@ -3,7 +3,7 @@ import {GET_USER, ADD_USER, CURRENT_USER} from '../actions/types';
 const initialState = {
     users: [],
     initialUser: false,
-    currentUser:{}
+    currentUser: {}
 };
 
 export default function (state = initialState, action) {
@@ -15,9 +15,10 @@ export default function (state = initialState, action) {
                 initialUser: true
             };
         case ADD_USER:
+            action.payload.id = state.users.length + 1
             return {
                 ...state,
-                users: action.payload
+                users: [...state.users, action.payload]
             };
         case CURRENT_USER:
             return {
