@@ -87,7 +87,7 @@ const Header = () => {
                     ))}
                 </ul>
                 <ul className="navbar-nav ml-auto">
-                    <li className={'nav-item'}><a className="nav-link">{user&&user.name}</a></li>
+                    <li className={'nav-item'}><a className="nav-link">{user && user.name}</a></li>
                     {actionRoute()}
 
                 </ul>
