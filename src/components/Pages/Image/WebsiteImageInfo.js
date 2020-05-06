@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const WebsiteImageInfo = () => {
+    const [height, setHeight] = useState('0%')
     return (
         <div>
             <section className="vdo_wrap">
@@ -9,9 +10,9 @@ const WebsiteImageInfo = () => {
                 </div>
 
                 <div className="view_dtl">
-                    <div className="vw_dlt_hd">
-                        <h6>VIEW DETAILS</h6>
-                        <img className="img-fluid" src="images/icon.svg"/>
+                    <div className="vw_dlt_hd hover">
+                        <h6 onClick={()=>setHeight('100%')}>VIEW DETAILS</h6>
+                        <img className="img-fluid" src="/assets/images/icon.svg"/>
                     </div>
                     <ul>
                         <li><img className="img-fluid" src="/assets/images/scnr.svg"/></li>
@@ -24,8 +25,8 @@ const WebsiteImageInfo = () => {
 
 
                 <div className="ovrly">
-                    <div id="myNav" className="overlay">
-                        <a href="javascript:void(0)" className="closebtn" onClick="closeNav()">&times;</a>
+                    <div id="myNav" className="overlay" style={{height:height}}>
+                        <a href="javascript:void(0)" className="closebtn" onClick={()=>setHeight('0%')}>&times;</a>
                         <div className="overlay-content ovrly_cnt">
                             <div className="container">
                                 <h3>Wedding Ceremony Lorem ipsum.</h3>
@@ -60,8 +61,6 @@ const WebsiteImageInfo = () => {
                         </div>
                     </div>
 
-                    <span style="font-size:30px;cursor:pointer" onClick="openNav()">v
-        </span>
                 </div>
 
             </section>

@@ -11,13 +11,13 @@ const WebsiteFooter = () => {
                         </div>
                         <ul className="ftr_lst">
                             <li>
-                                <a href="#">TERMS OF USE</a>
+                                <a href="/about-us">TERMS OF USE</a>
                             </li>
                             <li>
-                                <a href="#">PRIVACY POLICY</a>
+                                <a href="/privacy-policy">PRIVACY POLICY</a>
                             </li>
                             <li className="rsvd">
-                                flicaf.com. All rights reserved
+                                All rights reserved
                             </li>
                         </ul>
                     </div>

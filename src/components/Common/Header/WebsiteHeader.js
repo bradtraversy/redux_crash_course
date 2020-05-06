@@ -1,6 +1,46 @@
 import React from 'react';
+import NavLink from "./NavLink";
+import {TOGGLE_LOGIN, TOGGLE_SIGNUP} from "../../../actions/types";
+import {useDispatch, useSelector} from "react-redux";
 
+const routes = [{
+    title: "HOME",
+    link: '/'
+}, {
+    title: "IMAGES",
+    link: '/images'
+}, {
+    title: "VIDEOS",
+    link: '/videos'
+}, {
+    title: "CAMERA",
+    link: '/cameras'
+}, {
+    title: "PROFILE",
+    link: '/profile'
+}, {
+    title: "BLOG",
+    link: '/blogs'
+}, {
+    title: "SERVICES",
+    link: '/service'
+}, {
+    title: "ABOUT",
+    link: '/about'
+}, {
+    title: "CONTACT",
+    link: '/contact'
+},]
 const WebsiteHeader = () => {
+    const dispatch = useDispatch();
+    const {user} = useSelector(state => state.auth)
+    const openLogin = () => {
+        dispatch({type: TOGGLE_LOGIN})
+    }
+    const openSignUp = () => {
+        dispatch({type: TOGGLE_SIGNUP})
+    }
+    const path = window.location.pathname.split('/')[1]
     return (
         <div>
             <header>
@@ -12,45 +52,32 @@ const WebsiteHeader = () => {
 
                     <div className="collapse navbar-collapse navg top_nv" id="collapsibleNavbar">
                         <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">STUDIO</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">IMAGES</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">VIDEOS</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">CAMERA</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">GEARS</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">BLOG</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">PHOTO STORY</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">CONTACT</a>
-                            </li>
+                            {routes.map((route, id) => (
+                                <NavLink to={`/${path}${route.link}`} key={id}>
+                                    <li className="nav-item">
+                                        <a className="nav-link">{route.title}</a>
+                                    </li>
+                                </NavLink>
+                            ))}
                         </ul>
 
                         <ul className="navbar-nav  rgt_nvbr">
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">LOGIN</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">SIGN UP</a>
-                            </li>
+                            <NavLink>
+                                <li className="nav-item">
+                                    <a className="nav-link" onClick={() => openLogin()}>LOGIN</a>
+                                </li>
+                            </NavLink>
+                            <NavLink>
+                                <li className="nav-item">
+                                    <a className="nav-link" onClick={() => openSignUp()}>SIGN UP</a>
+                                </li>
+                            </NavLink>
                         </ul>
                     </div>
 
                     <div className="logo_img">
                         <figure className="mb-0">
-                            <img className="img-fluid" src="/assets/images/logo.jpg" />
+                            <img className="img-fluid" src="/assets/images/logo.jpg"/>
                         </figure>
                     </div>
                 </nav>

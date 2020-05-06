@@ -52,6 +52,18 @@ const routes = [
         path: '/contact',
         component: lazy(() => import('../../../components/Pages/ContactUs/WebsiteContactUs.js')),
         exact: true,
+    },{
+        path: '/service',
+        component: lazy(() => import('../../../components/Pages/Service/WebsiteServices')),
+        exact: true,
+    },{
+        path: '/about',
+        component: lazy(() => import('../../../components/Pages/AboutUs/WebsiteAboutUs')),
+        exact: true,
+    },{
+        path: '/upload',
+        component: lazy(() => import('../../../components/Pages/Upload/WebsiteUpload')),
+        exact: true,
     }
 ];
 const WebsiteContainer = () => {
