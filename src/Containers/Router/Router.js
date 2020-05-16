@@ -12,6 +12,10 @@ const routes = [
         path: '/photo',
         component: lazy(() => import('../../components/Pages/Image/Image')),
         exact: true,
+    },{
+        path: '/photo/:id',
+        component: lazy(() => import('../../components/Pages/Image/ImageInfo')),
+        exact: true,
     }, {
         path: '/photographer/:id',
         component: lazy(() => import('../../components/Pages/Photographer/PhotographerInfo')),
