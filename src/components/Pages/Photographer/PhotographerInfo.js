@@ -1,22 +1,32 @@
 import React from 'react';
-import './style.css'
-import {useDispatch, useSelector} from "react-redux";
-import {getUser} from '../../../actions/userActions';
+import './styles.scss'
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from '../../../actions/userActions';
 import Image from '../../../Helpers/Image'
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const PhotographerInfo = () => {
-    const {currentUser} = useSelector(state => state.users);
+    const { currentUser } = useSelector(state => state.users);
     const dispatch = useDispatch();
-    const {id} = useParams();
+    const { id } = useParams();
     React.useEffect(() => {
         dispatch(getUser(id));
     }, [dispatch, currentUser]);
     return (
-        <div className="row">
-            <div className="col-md-8">
-                <Image src={currentUser.photo} width={500}/>
-            </div>
+
+
+   
+        <div>
+            <section className="coverImage">
+                <img src="/assets/images/portalicons/cover.svg" className="img-fluid" />
+                <div className="mainprofileWrap">
+                    <div className="profilePicture">
+                        <img src={currentUser.photo} class="img-fluid" />
+                    </div>
+                </div>
+            </section>
+       
+
             <div className="col-md-4">
                 <ul className="list-group">
                     <li className="list-group-item"><b>Title : </b>{currentUser.name}</li>

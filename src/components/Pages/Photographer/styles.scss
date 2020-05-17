@@ -1,0 +1,108 @@
+:root {
+    --main-color: #4870ab;
+    --secondary-color: #404e63;
+    --text-heading: #1e2930;
+    --text-color: #4b4b4b;
+    --white-color: #ffffff;
+    --body-color: #f0f3f8;
+    --anchor-black: #171717;
+
+    --gradient-shade-1p: #4870ab;
+    --gradient-shade-1s: #8c67c1;
+    --gradient-p: #b9c0ec;
+
+    --h1-fontsize: 2em;
+    --h2-fontsize: 1.8em;
+    --h3-fontsize: 1.6em;
+    --h4-fontsize: 1.4em;
+    --h5-fontsize: 1.2em;
+    --h6-fontsize: 1em;
+    --paragraph: 12px;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+ul,
+li {
+    list-style: none;
+    padding: 0;
+}
+a,
+a:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+html,
+body {
+    margin: 0px;
+    background: var(--body-color);
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+}
+
+/* Listing Styles */
+
+section.card-listing-wrap {
+    position: fixed;
+    top: 94px;
+    bottom: 78px;
+    width: 100%;
+    padding: 30px;
+    left: 0;
+    overflow: auto;
+    flex-wrap: wrap;
+    .row{
+
+        .listing-card {
+            // flex-grow: 1;
+            padding: 0 15px 15px 15px;
+            width:calc(100% / 6);
+        }
+       
+    }
+    
+}
+
+/* Image-Gallery Styles */
+
+
+/* Cover Image Section */
+section.coverImage {
+    background: var(--secondary-color);
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 94px;
+  }
+  .mainprofileWrap {
+    position: absolute;
+    z-index: 100;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 15px;
+    width: 160px;
+    height: 160px;
+    background: #ffffff61;
+    box-shadow: 0 5px 15px #0000002b;
+  }
+  .profiledetailsLeftSection {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .profiledetailsRightSection {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .profilePicture {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  /* Cover Image Section */
