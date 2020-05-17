@@ -5,6 +5,6 @@ export const getUsers = () => dispatch => {
     dispatch({type: GET_USER, payload: users})
 }
 export const getUser = (id) => dispatch =>{
-    const data = users.find((o => o.id = id))
+    const data = users.find((o => o.id == id))
     dispatch({type:CURRENT_USER,payload:data})
 }
