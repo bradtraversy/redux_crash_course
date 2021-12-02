@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchPosts } from '../slices/postsSlice';
+import { fetchPosts, selectPosts } from '../slices/postsSlice';
 
 function Posts() {
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts.items);
+  const posts = useSelector(selectPosts);
 
   useEffect(() => {
     dispatch(fetchPosts());
