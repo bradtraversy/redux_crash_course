@@ -1,16 +1,12 @@
-import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import fetchMock from 'jest-fetch-mock';
 import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
 
-import { createPost } from '../slices/postsSlice';
+import { createStore } from '../store';
 import PostForm from './PostForm';
 
 describe('<PostForm />', () => {
-  const createMockStore = configureStore(getDefaultMiddleware());
-
   beforeAll(() => {
     fetchMock.enableMocks();
   });
@@ -24,7 +20,7 @@ describe('<PostForm />', () => {
   });
 
   it('render the form', () => {
-    const store = createMockStore();
+    const store = createStore();
 
     render(
       <Provider store={store}>
@@ -38,7 +34,7 @@ describe('<PostForm />', () => {
   });
 
   it(`create a new post`, async () => {
-    const store = createMockStore();
+    const store = createStore();
 
     fetchMock.mockResponseOnce(
       JSON.stringify({
@@ -59,13 +55,7 @@ describe('<PostForm />', () => {
     user.click(screen.getByRole('button', { name: /submit/i }));
 
     // Wait for the request to success
-    // TODO: Replace this because is a bad practice
-    await waitFor(() => {
-      const actions = store.getActions();
-
-      expect(actions).toHaveLength(2);
-      expect(actions[0]).toHaveProperty('type', createPost.pending.type);
-      expect(actions[1]).toHaveProperty('type', createPost.fulfilled.type);
-    });
+    // TODO: Replace this because it is a bad practice
+    await waitFor(() => expect(store.getState().posts.item).toBeDefined());
   });
 });
