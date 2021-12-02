@@ -15,7 +15,7 @@ function Posts() {
   const postItems = useMemo(
     () =>
       (newPost ? [newPost, ...posts] : posts).map((post) => (
-        <div key={post.id}>
+        <div data-testid="post" key={post.id}>
           <h3>{post.title}</h3>
           <p>{post.body}</p>
         </div>
