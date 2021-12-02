@@ -5,7 +5,7 @@ import fetchMock from 'jest-fetch-mock';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import { NEW_POST } from '../actions/types';
+import { createPost } from '../actions/postActions';
 import PostForm from './PostForm';
 
 describe('<PostForm />', () => {
@@ -39,7 +39,7 @@ describe('<PostForm />', () => {
 
   it(`create a new post`, async () => {
     const store = createMockStore();
-    
+
     fetchMock.mockResponseOnce(
       JSON.stringify({
         title: 'Post title',
@@ -63,8 +63,9 @@ describe('<PostForm />', () => {
     await waitFor(() => {
       const actions = store.getActions();
 
-      expect(actions).toHaveLength(1);
-      expect(actions[0]).toHaveProperty('type', NEW_POST);
+      expect(actions).toHaveLength(2);
+      expect(actions[0]).toHaveProperty('type', createPost.pending.type);
+      expect(actions[1]).toHaveProperty('type', createPost.fulfilled.type);
     });
   });
 });

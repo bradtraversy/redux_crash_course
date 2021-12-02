@@ -1,7 +1,6 @@
 import { Reducer, Thunk } from 'redux-testkit';
 import fetchMock from 'jest-fetch-mock';
 
-import { FETCH_POSTS, NEW_POST } from '../actions/types';
 import { createPost, fetchPosts } from '../actions/postActions';
 import postReducer, { initialState } from './postReducer';
 
@@ -29,7 +28,7 @@ describe('posts reducer', () => {
 
   it('set all posts', () => {
     const action = {
-      type: FETCH_POSTS,
+      type: fetchPosts.fulfilled.type,
       payload: [
         {
           userId: 1,
@@ -64,7 +63,7 @@ describe('posts reducer', () => {
 
   it('add post', () => {
     const action = {
-      type: NEW_POST,
+      type: createPost.fulfilled.type,
       payload: {
         title: 'Post title',
         body: 'Post body',
@@ -82,8 +81,15 @@ describe('posts reducer', () => {
 
     const dispatches = await Thunk(fetchPosts).execute();
 
-    expect(dispatches).toHaveLength(1);
-    expect(dispatches[0].getAction()).toHaveProperty('type', FETCH_POSTS);
+    expect(dispatches).toHaveLength(2);
+    expect(dispatches[0].getAction()).toHaveProperty(
+      'type',
+      fetchPosts.pending.type
+    );
+    expect(dispatches[1].getAction()).toHaveProperty(
+      'type',
+      fetchPosts.fulfilled.type
+    );
   });
 
   it('create a new post', async () => {
@@ -98,7 +104,14 @@ describe('posts reducer', () => {
       body: 'Post body',
     });
 
-    expect(dispatches).toHaveLength(1);
-    expect(dispatches[0].getAction()).toHaveProperty('type', NEW_POST);
+    expect(dispatches).toHaveLength(2);
+    expect(dispatches[0].getAction()).toHaveProperty(
+      'type',
+      createPost.pending.type
+    );
+    expect(dispatches[1].getAction()).toHaveProperty(
+      'type',
+      createPost.fulfilled.type
+    );
   });
 });

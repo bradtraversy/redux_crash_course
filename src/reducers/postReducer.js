@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-import { FETCH_POSTS, NEW_POST } from '../actions/types';
+import { createPost, fetchPosts } from '../actions/postActions';
 
 export const initialState = {
   items: [],
@@ -8,11 +8,11 @@ export const initialState = {
 };
 
 const postReducer = createReducer(initialState, (builder) => {
-  builder.addCase(FETCH_POSTS, (state, action) => {
+  builder.addCase(fetchPosts.fulfilled, (state, action) => {
     state.items = action.payload;
   });
 
-  builder.addCase(NEW_POST, (state, action) => {
+  builder.addCase(createPost.fulfilled, (state, action) => {
     state.item = action.payload;
   });
 });

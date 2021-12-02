@@ -1,16 +1,18 @@
-import { FETCH_POSTS, NEW_POST } from './types';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchPosts = () => async (dispatch) => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const posts = await response.json();
+export const fetchPosts = createAsyncThunk(
+  'posts/fetch',
+  async (_, { signal }) => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      signal,
+    });
+    const posts = await response.json();
 
-  dispatch({
-    type: FETCH_POSTS,
-    payload: posts,
-  });
-};
+    return posts;
+  }
+);
 
-export const createPost = (postData) => async (dispatch) => {
+export const createPost = createAsyncThunk('posts/create', async (postData) => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'POST',
     headers: {
@@ -20,8 +22,5 @@ export const createPost = (postData) => async (dispatch) => {
   });
   const post = await response.json();
 
-  dispatch({
-    type: NEW_POST,
-    payload: post,
-  });
-};
+  return post;
+});

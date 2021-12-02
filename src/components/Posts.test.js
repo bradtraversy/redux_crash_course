@@ -4,7 +4,7 @@ import fetchMock from 'jest-fetch-mock';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import { FETCH_POSTS } from '../actions/types';
+import { fetchPosts } from '../actions/postActions';
 import Posts from './Posts';
 
 describe('<Post />', () => {
@@ -79,8 +79,9 @@ describe('<Post />', () => {
     await waitFor(() => {
       const actions = store.getActions();
 
-      expect(actions).toHaveLength(1);
-      expect(actions[0]).toHaveProperty('type', FETCH_POSTS);
+      expect(actions).toHaveLength(2);
+      expect(actions[0]).toHaveProperty('type', fetchPosts.pending.type);
+      expect(actions[1]).toHaveProperty('type', fetchPosts.fulfilled.type);
     });
     expect(screen.getAllByTestId('post')).toHaveLength(3);
   });
