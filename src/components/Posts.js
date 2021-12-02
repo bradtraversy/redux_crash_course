@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchPosts } from '../actions/postActions';
+import { fetchPosts } from '../slices/postsSlice';
 
 function Posts() {
   const dispatch = useDispatch();

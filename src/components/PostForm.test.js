@@ -5,7 +5,7 @@ import fetchMock from 'jest-fetch-mock';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import { createPost } from '../actions/postActions';
+import { createPost } from '../slices/postsSlice';
 import PostForm from './PostForm';
 
 describe('<PostForm />', () => {

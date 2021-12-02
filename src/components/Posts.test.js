@@ -4,7 +4,7 @@ import fetchMock from 'jest-fetch-mock';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import { fetchPosts } from '../actions/postActions';
+import { fetchPosts } from '../slices/postsSlice';
 import Posts from './Posts';
 
 describe('<Post />', () => {

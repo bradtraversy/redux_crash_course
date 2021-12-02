@@ -1,4 +1,9 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+export const initialState = {
+  items: [],
+  item: undefined,
+};
 
 export const fetchPosts = createAsyncThunk(
   'posts/fetch',
@@ -24,3 +29,20 @@ export const createPost = createAsyncThunk('posts/create', async (postData) => {
 
   return post;
 });
+
+const postsSlice = createSlice({
+  name: 'posts',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchPosts.fulfilled, (state, action) => {
+      state.items = action.payload;
+    });
+
+    builder.addCase(createPost.fulfilled, (state, action) => {
+      state.item = action.payload;
+    });
+  },
+});
+
+export default postsSlice.reducer;

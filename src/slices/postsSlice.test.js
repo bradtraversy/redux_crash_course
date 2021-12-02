@@ -1,10 +1,13 @@
 import { Reducer, Thunk } from 'redux-testkit';
 import fetchMock from 'jest-fetch-mock';
 
-import { createPost, fetchPosts } from '../actions/postActions';
-import postReducer, { initialState } from './postReducer';
+import postsReducer, {
+  createPost,
+  fetchPosts,
+  initialState,
+} from './postsSlice';
 
-describe('posts reducer', () => {
+describe('Posts reducer', () => {
   beforeAll(() => {
     fetchMock.enableMocks();
   });
@@ -18,7 +21,7 @@ describe('posts reducer', () => {
   });
 
   it('get initial state', () => {
-    expect(postReducer(initialState, {})).toMatchInlineSnapshot(`
+    expect(postsReducer(initialState, {})).toMatchInlineSnapshot(`
       Object {
         "item": undefined,
         "items": Array [],
@@ -26,10 +29,9 @@ describe('posts reducer', () => {
     `);
   });
 
-  it('set all posts', () => {
-    const action = {
-      type: fetchPosts.fulfilled.type,
-      payload: [
+  it('fetch and set all posts', async () => {
+    fetchMock.mockResponseOnce(
+      JSON.stringify([
         {
           userId: 1,
           id: 1,
@@ -51,45 +53,18 @@ describe('posts reducer', () => {
             'Velit irure ex do ex aliquip cupidatat qui dolore eiusmod reprehenderit exercitation amet eu.',
           body: 'Anim eiusmod velit laborum enim cupidatat consectetur eiusmod.\nEx id quis non irure.',
         },
-      ],
-    };
-
-    Reducer(postReducer)
-      .expect(action)
-      .toChangeInState({
-        items: Array.from(action.payload),
-      });
-  });
-
-  it('add post', () => {
-    const action = {
-      type: createPost.fulfilled.type,
-      payload: {
-        title: 'Post title',
-        body: 'Post body',
-        id: 4,
-      },
-    };
-
-    Reducer(postReducer).expect(action).toChangeInState({
-      item: action.payload,
-    });
-  });
-
-  it('fetch all posts', async () => {
-    fetchMock.mockResponseOnce('[]');
+      ])
+    );
 
     const dispatches = await Thunk(fetchPosts).execute();
 
     expect(dispatches).toHaveLength(2);
-    expect(dispatches[0].getAction()).toHaveProperty(
-      'type',
-      fetchPosts.pending.type
-    );
-    expect(dispatches[1].getAction()).toHaveProperty(
-      'type',
-      fetchPosts.fulfilled.type
-    );
+    expect(dispatches[0].getType()).toBe(fetchPosts.pending.type);
+    expect(dispatches[1].getType()).toBe(fetchPosts.fulfilled.type);
+
+    Reducer(postsReducer).expect(dispatches[1].getAction()).toChangeInState({
+      items: dispatches[1].getAction().payload,
+    });
   });
 
   it('create a new post', async () => {
@@ -105,13 +80,11 @@ describe('posts reducer', () => {
     });
 
     expect(dispatches).toHaveLength(2);
-    expect(dispatches[0].getAction()).toHaveProperty(
-      'type',
-      createPost.pending.type
-    );
-    expect(dispatches[1].getAction()).toHaveProperty(
-      'type',
-      createPost.fulfilled.type
-    );
+    expect(dispatches[0].getType()).toBe(createPost.pending.type);
+    expect(dispatches[1].getType()).toBe(createPost.fulfilled.type);
+
+    Reducer(postsReducer).expect(dispatches[1].getAction()).toChangeInState({
+      item: dispatches[1].getAction().payload,
+    });
   });
 });

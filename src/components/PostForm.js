@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { createPost } from '../actions/postActions';
+import { createPost } from '../slices/postsSlice';
 
 function PostForm() {
   const dispatch = useDispatch();
