@@ -1,0 +1,70 @@
+import { render, screen, waitFor } from '@testing-library/react';
+import user from '@testing-library/user-event';
+import fetchMock from 'jest-fetch-mock';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+
+import { NEW_POST } from '../actions/types';
+import PostForm from './PostForm';
+
+describe('<PostForm />', () => {
+  const createMockStore = configureStore([thunk]);
+
+  beforeAll(() => {
+    fetchMock.enableMocks();
+  });
+
+  beforeEach(() => {
+    fetchMock.resetMocks();
+  });
+
+  afterAll(() => {
+    fetchMock.disableMocks();
+  });
+
+  it('render the form', () => {
+    const store = createMockStore();
+
+    render(
+      <Provider store={store}>
+        <PostForm />
+      </Provider>
+    );
+
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Add Post'
+    );
+  });
+
+  it(`create a new post`, async () => {
+    const store = createMockStore();
+    
+    fetchMock.mockResponseOnce(
+      JSON.stringify({
+        title: 'Post title',
+        body: 'Post body',
+        id: 101,
+      }),
+      201
+    );
+    render(
+      <Provider store={store}>
+        <PostForm />
+      </Provider>
+    );
+
+    user.type(screen.getByRole('textbox', { name: /title/i }), 'Post title');
+    user.type(screen.getByRole('textbox', { name: /body/i }), 'Post body');
+    user.click(screen.getByRole('button', { name: /submit/i }));
+
+    // Wait for the request to success
+    // TODO: Replace this because is a bad practice
+    await waitFor(() => {
+      const actions = store.getActions();
+
+      expect(actions).toHaveLength(1);
+      expect(actions[0]).toHaveProperty('type', NEW_POST);
+    });
+  });
+});
