@@ -3,7 +3,7 @@ import fetchMock from 'jest-fetch-mock';
 
 import { FETCH_POSTS, NEW_POST } from '../actions/types';
 import { createPost, fetchPosts } from '../actions/postActions';
-import postReducer from './postReducer';
+import postReducer, { initialState } from './postReducer';
 
 describe('posts reducer', () => {
   beforeAll(() => {
@@ -19,7 +19,7 @@ describe('posts reducer', () => {
   });
 
   it('get initial state', () => {
-    expect(postReducer()).toMatchInlineSnapshot(`
+    expect(postReducer(initialState, {})).toMatchInlineSnapshot(`
       Object {
         "item": undefined,
         "items": Array [],
