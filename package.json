@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "1.6.2",
     "@testing-library/jest-dom": "5.15.1",
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "13.5.0",
@@ -14,7 +15,6 @@
     "redux": "4.1.2",
     "redux-mock-store": "1.5.4",
     "redux-testkit": "1.0.6",
-    "redux-thunk": "2.4.1",
     "web-vitals": "2.1.2"
   },
   "scripts": {

@@ -1,14 +1,14 @@
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import { render, screen, waitFor } from '@testing-library/react';
 import fetchMock from 'jest-fetch-mock';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 
 import { FETCH_POSTS } from '../actions/types';
 import Posts from './Posts';
 
 describe('<Post />', () => {
-  const createMockStore = configureStore([thunk]);
+  const createMockStore = configureStore(getDefaultMiddleware());
 
   beforeAll(() => {
     fetchMock.enableMocks();
