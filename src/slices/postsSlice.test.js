@@ -83,8 +83,31 @@ describe('Posts reducer', () => {
     expect(dispatches[0].getType()).toBe(createPost.pending.type);
     expect(dispatches[1].getType()).toBe(createPost.fulfilled.type);
 
-    Reducer(postsReducer).expect(dispatches[1].getAction()).toChangeInState({
-      item: dispatches[1].getAction().payload,
-    });
+    Reducer(postsReducer)
+      .withState({
+        items: [
+          {
+            userId: 1,
+            id: 1,
+            title:
+              'Est do sint proident esse nisi non ex eu quis adipisicing eu esse sint.',
+            body: 'Enim mollit adipisicing veniam ullamco enim commodo ex laboris aute irure ut.\nVelit consectetur eu mollit esse aliquip ut.',
+          },
+        ],
+      })
+      .expect(dispatches[1].getAction())
+      .toChangeInState({
+        items: [
+          dispatches[1].getAction().payload,
+          {
+            userId: 1,
+            id: 1,
+            title:
+              'Est do sint proident esse nisi non ex eu quis adipisicing eu esse sint.',
+            body: 'Enim mollit adipisicing veniam ullamco enim commodo ex laboris aute irure ut.\nVelit consectetur eu mollit esse aliquip ut.',
+          },
+        ],
+        item: dispatches[1].getAction().payload,
+      });
   });
 });

@@ -40,6 +40,7 @@ const postsSlice = createSlice({
     });
 
     builder.addCase(createPost.fulfilled, (state, action) => {
+      state.items = [action.payload, ...state.items];
       state.item = action.payload;
     });
   },
